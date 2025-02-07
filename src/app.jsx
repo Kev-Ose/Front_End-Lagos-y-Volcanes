@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import FindUs from './pages/FindUs/FindUs';
-import Menu from './pages/Menu/menu';
+import Menu from './pages/Menu/Menu';
 import Reservation from './pages/Reservation/Reservation';
 
 // import './App.css';
