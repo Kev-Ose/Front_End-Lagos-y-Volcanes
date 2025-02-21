@@ -18,7 +18,7 @@ function App() {
                 { index: true, element: <Home /> },
                 { path: 'findus', element: <FindUs /> },
                 { path: 'menu', element: <Menu /> },
-                { path: 'reservation', element: <Reservation /> }
+                { path: 'reservations', element: <Reservation /> }
             ]
         }
     ]);
