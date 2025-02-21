@@ -4,6 +4,7 @@ import granada from '../../img/granada.jpg'
 import lyv from '../../img/LyV Image.png'
 import { FaFacebook, FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa6";
 import { WhatsappIcon, WhatsappShareButton } from "react-share";
+import SERVER_URL from '../../server.js';
 
 const Homepage = () => {
 
@@ -24,7 +25,7 @@ const Homepage = () => {
                 <Link to='/menu'> View Menu </Link>
             </button>
             <button className="oswald-uniquifier">
-                <Link to='/reservation'> Make a Reservation </Link>
+                <Link to='/reservations'> Make a Reservation </Link>
             </button>
             <button className="oswald-uniquifier">
                 <Link to='/findus'> Find Us </Link>
