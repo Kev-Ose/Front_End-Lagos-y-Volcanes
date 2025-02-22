@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import API_URL from "../../server";
+import SERVER_URL from "../../server.js";
 
 
 //const API_URL = "http://localhost:5050";
@@ -16,7 +16,7 @@ const App = () => {
     const fetchReservations = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${API_URL}/reservations`);
+        const res = await axios.get(`${SERVER_URL}/reservations`);
         setReservations(res.data);
       } catch (err) {
         setError("Error fetching reservations. Please try again later.");
@@ -58,7 +58,7 @@ const App = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${API_URL}/reservations`, form);
+      const response = await axios.post(`${SERVER_URL}/reservations`, form);
       setReservations([...reservations, response.data]);
       setForm({ name: "", email: "", phone: "", date: "", time: "", guests: "" });
     } catch (err) {
