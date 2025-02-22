@@ -1,6 +1,6 @@
 const handleReserve = async (data) => {
     try {
-      const response = await fetch("http://localhost:5050/reservation", {
+      const response = await fetch("https://back-end-lagos-y-volcanes.vercel.app/reservations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
