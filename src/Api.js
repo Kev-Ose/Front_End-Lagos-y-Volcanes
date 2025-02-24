@@ -1,6 +1,8 @@
+import SERVER_URL from "./server";
+
 const handleReserve = async (data) => {
     try {
-      const response = await fetch("https://back-end-lagos-y-volcanes.vercel.app/reservations", {
+      const response = await fetch(SERVER_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
