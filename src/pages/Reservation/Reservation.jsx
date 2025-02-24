@@ -17,7 +17,13 @@ const App = () => {
       setLoading(true);
       try {
         const res = await axios.get(`${SERVER_URL}/reservations`);
-        setReservations(res.data);
+        console.log("Backend response:", res.data); // Log the response
+        if (Array.isArray(res.data)) {
+          setReservations(res.data);
+        } else {
+          setError("Unexpected response format from the server.");
+          setReservations([]); // Reset to an empty array
+        }
       } catch (err) {
         setError("Error fetching reservations. Please try again later.");
       } finally {
