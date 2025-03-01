@@ -36,7 +36,7 @@ const Homepage = () => {
       </Link>
       <Link
         className="icons"
-        to={"https://www.instagram.com/lagosyvolcanesbe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="}
+        to={"https://www.instagram.com/lagosyvolcanesbxl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="}
         target="_blank"
         rel="noopener noreferrer"
       >
