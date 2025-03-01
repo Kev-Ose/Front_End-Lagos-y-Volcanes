@@ -1,32 +1,154 @@
-form {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    margin-bottom: 10px;
-    padding: 5px;
+/* General Styles */
+/*body {
+  font-family: 'Playfair Display', serif;
+  color: #4a3f35; 
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; */ /* Ensure the body covers the full viewport height */
+/*display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*/
+
+/* Full-page background container */
+.background-container {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
     width: 100%;
-    box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #28a745;
-    color: white;
-    border: none;
+    height: 100%;
+    background-image: url('../../img/iglesiaSanMarcos.jpg'); /* Default image for large screens */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    z-index: 0; /* Place it behind the content but allow interaction */
+}
+
+/* Media Query for Small Screens (e.g., tablets, mobile devices) */
+@media (max-width: 768px) {
+    .background-container {
+        background-image: url('../../img/calzadaGranada.jpg'); /* Image for small screens */
+    }
+}
+
+/* Reservation Section */
+.reservation-section {
+    position: relative; /* Ensure it stays on top of the background */
+    z-index: 1; /* Place it above the background */
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.9
+    ); /* Semi-transparent white background for the form */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reservation-header h1 {
+    font-size: 2.5rem;
+    color: #c44536; /* Warm red for a Latino touch */
+    margin-bottom: 10px;
+}
+
+.reservation-header p {
+    font-size: 1.1rem;
+    color: #6b5b4d; /* Darker brown for contrast */
+}
+
+.reservation-form-container {
+    padding: 20px;
+}
+
+.reservation-form-container h2 {
+    font-size: 2rem;
+    color: #c44536; /* Warm red */
+    margin-bottom: 20px;
+}
+
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group input {
     padding: 10px;
+    border: 1px solid #d4c8b9; /* Light brown border */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: rgba(
+        248,
+        241,
+        231,
+        0.8
+    ); /* Semi-transparent warm beige input background */
+    color: #4a3f35; /* Dark brown text */
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #c44536; /* Warm red on focus */
+    box-shadow: 0 0 5px rgba(196, 69, 54, 0.5); /* Subtle shadow */
+}
+
+.reserve-button {
+    padding: 12px 20px;
+    background-color: #c44536; /* Warm red */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
+    transition: background-color 0.3s ease;
+}
+
+.reserve-button:disabled {
+    background-color: #d4c8b9; /* Light brown when disabled */
+    cursor: not-allowed;
+}
+
+.reserve-button:hover:not(:disabled) {
+    background-color: #a5372b; /* Darker red on hover */
+}
+
+.error-message {
+    color: #c44536; /* Warm red for error messages */
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Back to Home Button */
+.back-to-home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #c44536; /* Warm red */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: #a5372b; /* Darker red on hover */
+}

@@ -1,5 +1,5 @@
 import './FindUs.css';
-import granada1 from '../../img/Programming Photos Dec 16 2021 (1).jpg';
+import ojoDeAguaDesktop from '../../img/ojoDeAguaDesktop.jpg';
 import foto1 from '../../img/LyV Image.png';
 import foto2 from '../../img/Nacatamal.jpg';
 import foto3 from '../../img/Opening.jpg';
@@ -47,7 +47,7 @@ const FindUs = () => {
   return (
         <div className="findus">
             <div className="findgen">
-              <img src={granada1} alt="granada1" />
+              <img src={ojoDeAguaDesktop} alt="ojoDeAgua" />
               <div className="foto1">
                 <NavLink to='/'>
                   <img src={foto1} alt="foto1" />
