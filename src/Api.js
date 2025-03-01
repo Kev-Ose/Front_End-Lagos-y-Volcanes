@@ -1,6 +1,8 @@
+import SERVER_URL from "./server";
+
 const handleReserve = async (data) => {
     try {
-      const response = await fetch("http://localhost:5050/reservation", {
+      const response = await fetch(SERVER_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
