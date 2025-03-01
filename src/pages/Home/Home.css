@@ -1,183 +1,143 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
-.oswald-uniquifier  {
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 250;
-    font-style: normal;
-  }
-
-a {
-    text-decoration: none; /* Removes the underline */
-    color: inherit; /* Inherits the text color from its parent */
-}
-
-  /*.oswald-uniquifier a {
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: initial;
-    font-weight: 100;
-    font-style: normal;
-  }*/
-
-/*.homepage {
-    margin: 0;
-    margin-right: 0%;
-    margin-left: 0%;
-    padding: 0%;
-    padding-left: 0%;
-    padding-right: 0%;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image img{
-
-    object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
-/*}
-
-.container {
-    position: absolute;
-    /*top: 70%;*/
-    /*left: 20%;*/
-    /*transform: translate(-50%, -50%);*/
-    /*font-size: 4rem;*/
-    /*font-weight: bold;*/
-    /*text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);*/
-  /*  display: flex; /* Enables flexbox */
-  /*  justify-content: space-between; /* Distributes the columns evenly */
-    /*padding: 20px;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
-
-/*.buttons {
-    position: absolute;
-    /*top: 50%;*/
-    /*left: 20%;*/
-    /*transform: translate(-70%, -70%);*/
-    /*color: greenyellow;
-    font-size: 7rem;
-    font-weight: italic;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    text-align: center;
-    border-radius: 10%;
-    background-color: transparent; */
-  /*flex: 1; /* Ensures each column takes equal space */
-  /*margin: 10px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-    text-align: center;
-} */
-
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/*body {
-    font-family: "Crimson Text", serif;
-}*/
-
-/* Homepage styles */
-.homepage {
-    height: 100vh; /* Make it fullscreen */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: greenyellow; /* Fallback color */
-}
-
-/* Image container */
-.image {
-    position: relative;
+/* Full-page background container */
+.background-holder {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    background-image: url('../../img/granada.jpg'); /* Default image for large screens */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    z-index: 0; /* Place it behind the content */
 }
 
-.image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire container */
+/* Media Query for Small Screens (e.g., tablets, mobile devices) */
+@media (max-width: 768px) {
+    .background-holder {
+        background-image: url('../../img/calzadaGranada.jpg'); /* Image for small screens */
+    }
 }
 
-.lyv img {
+/* General Styles */
+.homepage-section img {
     position: absolute;
     width: 20%;
-    height: 37%;
+    height: auto; /* Maintain aspect ratio */
     top: 3%;
     left: 50%;
     transform: translateX(-50%);
-}
-
-/* Button container */
-.container {
+  }
+  
+  /* Button container */
+  .container {
     position: absolute; /* Position on top of the image */
-    bottom: 30%; /* Adjust positioning */
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-}
-
-.container button {
+  }
+  
+  .container button {
     background-color: transparent; /* Make buttons initially transparent */
     border: 3px groove whitesmoke;
     color: white;
-    padding: 30px 30px;
-    margin: 50px;
+    padding: 15px 30px;
+    margin: 40px;
     border-radius: 5px;
     font-size: 40px;
     cursor: pointer;
     transition: all 0.5s ease;
-    font-family: "Bokor", system-ui;
-
-}
-
-.container button:hover {
-    background-color: white;
+    font-family: 'Bokor', system-ui;
+  }
+  
+  /* Remove underline from buttons */
+  .container button a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .container button:hover {
+    background-color: whitesmoke;
     color: #333;
     transform: scale(1.1);
-}
-
-/*.oswald-uniquifier a {
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-}*/
-
-.contact-details a {
-    text-decoration: underline; /* Removes the underline */
-    color: inherit; /* Inherits the text color from its parent */
-}
-
-.social {
+  }
+  
+  /* Social Icons */
+  .social {
     position: absolute;
-    transform: translateX(-50%);
-    height: 13%;
-    width: 30%;
     bottom: 8%;
-    right: 15%;
-}
-
-.icons {
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .icons {
     color: white;
-    display: inline-block;
-    margin: 20px;
-    padding: 0px;
     font-size: 35px;
-}
-
-.icons:hover {
-    /*background-color: white;*/
-    /*color: white;*/
-    transform: scale(1.9);
-}
-
+    transition: transform 0.3s ease;
+  }
+  
+  .icons:hover {
+    transform: scale(1.5);
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* Small Screens (e.g., mobile devices) */
+  @media (max-width: 768px) {
+    .homepage-section img {
+      width: 40%; /* Increase image size for better visibility on small screens */
+      top: 5%; /* Adjust positioning */
+    }
+  
+    .container {
+      top: 30%; /* Adjust positioning */
+    }
+  
+    .container button {
+      padding: 10px 20px; /* Reduce padding for smaller screens */
+      margin: 20px; /* Reduce margin for smaller screens */
+      font-size: 24px; /* Reduce font size for smaller screens */
+    }
+  
+    .social {
+      bottom: 5%; /* Adjust positioning */
+      gap: 10px; /* Reduce gap between icons */
+    }
+  
+    .icons {
+      font-size: 24px; /* Reduce icon size for smaller screens */
+    }
+  }
+  
+  /* Large Screens (e.g., desktops) */
+  @media (min-width: 769px) {
+    .homepage-section img {
+      width: 20%; /* Default size for larger screens */
+      top: 3%; /* Default positioning */
+    }
+  
+    .container {
+      top: 40%; /* Default positioning */
+    }
+  
+    .container button {
+      padding: 15px 30px; /* Default padding */
+      margin: 40px; /* Default margin */
+      font-size: 40px; /* Default font size */
+    }
+  
+    .social {
+      bottom: 8%; /* Default positioning */
+      gap: 20px; /* Default gap between icons */
+    }
+  
+    .icons {
+      font-size: 35px; /* Default icon size */
+    }
+  }

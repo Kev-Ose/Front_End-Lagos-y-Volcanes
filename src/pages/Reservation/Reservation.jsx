@@ -1,100 +1,199 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API_URL from "../../server";
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import API_URL from '../../server';
+import './Reservation.css';
 
 //const API_URL = "http://localhost:5050";
 
 const App = () => {
-  const [reservations, setReservations] = useState([]);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", time: "", guests: "" });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+    const [reservations, setReservations] = useState([]);
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        time: '',
+        guests: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
-  // Fetch reservations when the component loads
-  useEffect(() => {
-    const fetchReservations = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${API_URL}/reservations`);
-        setReservations(res.data);
-      } catch (err) {
-        setError("Error fetching reservations. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
+    // Fetch reservations when the component loads
+    useEffect(() => {
+        const fetchReservations = async () => {
+            setLoading(true);
+            try {
+                const res = await axios.get(`${API_URL}/reservations`);
+                setReservations(res.data);
+            } catch (err) {
+                setError(
+                    'Error fetching reservations. Please try again later.'
+                );
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchReservations();
+    }, []);
+
+    // Form validation
+    const validateForm = () => {
+        if (
+            !form.name ||
+            !form.email ||
+            !form.phone ||
+            !form.date ||
+            !form.time ||
+            !form.guests
+        ) {
+            setError('All fields are required.');
+            return false;
+        }
+        if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+            setError('Invalid email format.');
+            return false;
+        }
+        if (!/^\d{10}$/.test(form.phone)) {
+            setError('Phone number must be 10 digits.');
+            return false;
+        }
+        const selectedDateTime = new Date(`${form.date}T${form.time}`);
+        if (selectedDateTime < new Date()) {
+            setError('Reservation must be for a future date and time.');
+            return false;
+        }
+        setError('');
+        return true;
     };
 
-    fetchReservations();
-  }, []);
+    // Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
 
-  // Form validation
-  const validateForm = () => {
-    if (!form.name || !form.email || !form.phone || !form.date || !form.time || !form.guests) {
-      setError("All fields are required.");
-      return false;
-    }
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) {
-      setError("Invalid email format.");
-      return false;
-    }
-    if (!/^\d{10}$/.test(form.phone)) {
-      setError("Phone number must be 10 digits.");
-      return false;
-    }
-    const selectedDateTime = new Date(`${form.date}T${form.time}`);
-    if (selectedDateTime < new Date()) {
-      setError("Reservation must be for a future date and time.");
-      return false;
-    }
-    setError("");
-    return true;
-  };
+        try {
+            setLoading(true);
+            const response = await axios.post(`${API_URL}/reservations`, form);
+            setReservations([...reservations, response.data]);
+            setForm({
+                name: '',
+                email: '',
+                phone: '',
+                date: '',
+                time: '',
+                guests: ''
+            });
+        } catch (err) {
+            setError('Error making reservation. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
+    return (
+        <div className="background-container">
+            <section className="reservation-section">
+                {/* Back to Home Button */}
+                <button
+                    className="back-to-home-button"
+                    onClick={() => (window.location.href = '/')} // Replace "/" with your homepage route
+                >
+                    ← Back to Home
+                </button>
 
-    try {
-      setLoading(true);
-      const response = await axios.post(`${API_URL}/reservations`, form);
-      setReservations([...reservations, response.data]);
-      setForm({ name: "", email: "", phone: "", date: "", time: "", guests: "" });
-    } catch (err) {
-      setError("Error making reservation. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+                <header className="reservation-header">
+                    <h1>Restaurant Reservations</h1>
+                    <p>
+                        Book your table and enjoy an unforgettable dining
+                        experience!
+                    </p>
+                </header>
 
-  return (
-    <div>
-      <h1>Restaurant Reservations</h1>
-
-      <h2>Make a Reservation</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-        <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-        <input type="text" placeholder="Phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
-        <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} />
-        <input type="time" value={form.time} onChange={(e) => setForm({ ...form, time: e.target.value })} />
-        <input type="number" placeholder="Guests" value={form.guests} onChange={(e) => setForm({ ...form, guests: e.target.value })} />
-        <button type="submit" disabled={loading}>Reserve</button>
-      </form>
-
-      <h2>Reservations</h2>
-      {loading && <p>Loading reservations...</p>}
-      <ul>
-        {reservations.map((res) => (
-          <li key={res.id}>
-            {res.name} - {res.date} {res.time} ({res.status})
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+                <div className="reservation-form-container">
+                    <h2>Make a Reservation</h2>
+                    {error && <p className="error-message">{error}</p>}
+                    <form onSubmit={handleSubmit} className="reservation-form">
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={form.name}
+                                onChange={(e) =>
+                                    setForm({ ...form, name: e.target.value })
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={form.email}
+                                onChange={(e) =>
+                                    setForm({ ...form, email: e.target.value })
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                placeholder="Phone"
+                                value={form.phone}
+                                onChange={(e) =>
+                                    setForm({ ...form, phone: e.target.value })
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="date"
+                                value={form.date}
+                                onChange={(e) =>
+                                    setForm({ ...form, date: e.target.value })
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="time"
+                                value={form.time}
+                                onChange={(e) =>
+                                    setForm({ ...form, time: e.target.value })
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="number"
+                                placeholder="Number of Guests"
+                                value={form.guests}
+                                onChange={(e) =>
+                                    setForm({ ...form, guests: e.target.value })
+                                }
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="reserve-button"
+                            disabled={loading}
+                        >
+                            {loading ? 'Reserving...' : 'Reserve'}
+                        </button>
+                    </form>
+                    <h2>Reservations</h2>
+                    {loading && <p>Loading reservations...</p>}
+                    <ul>
+                        {reservations.map((res) => (
+                            <li key={res.id}>
+                                {res.name} - {res.date} {res.time} ({res.status}
+                                )
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+        </div>
+    );
 };
 
 export default App;
@@ -158,7 +257,6 @@ const App = () => {
 };
 
 export default App;*/
-
 
 /*
 
@@ -365,7 +463,6 @@ const Reservation = ({ onReserve }) => {
 
 export default Reservation;
 */
-
 
 /*
 FIRST VERSION
