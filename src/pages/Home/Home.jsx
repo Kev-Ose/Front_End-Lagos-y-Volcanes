@@ -63,9 +63,13 @@ const Homepage = () => {
                         <FaTiktok />
                     </Link>
                     <div className="icons">
-                        <WhatsappShareButton url={url} quote={title}>
-                            <FaWhatsapp size={44} round={true} />
-                        </WhatsappShareButton>
+                        <a
+                            href={`https://wa.me/${32498600048}?text=${encodeURIComponent("Hello, I would like to get information over")}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FaWhatsapp className='fawha' round={true} />
+                        </a>
                     </div>
                 </div>
             </div>

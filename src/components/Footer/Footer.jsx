@@ -4,7 +4,7 @@ const Footer = () => {
 
     return (
 
-        console.log("hello")
+        console.log()
     );
 } ;
 

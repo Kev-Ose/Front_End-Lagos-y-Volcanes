@@ -4,7 +4,7 @@ import './Header.css';
 const Header = () => {
 
     return (
-        console.log("hello")
+        console.log()
     )
 } 
 
