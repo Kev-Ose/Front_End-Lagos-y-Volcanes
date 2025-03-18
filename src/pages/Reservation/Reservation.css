@@ -1,38 +1,36 @@
 /* Full-page background container */
 .background-container {
-    position: fixed; /* Cover the entire viewport */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../img/iglesiaSanMarcos.jpg'); /* Default image for large screens */
-    background-size: cover; /* Ensure the image covers the entire background */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    z-index: 0; /* Place it behind the content but allow interaction */
+    background-image: url('../../img/iglesiaSanMarcos.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
 
-/* Media Query for Small Screens (e.g., tablets, mobile devices) */
+/* Media Query for Small Screens */
 @media (max-width: 768px) {
     .background-container {
-        background-image: url('../../img/laPunta.jpg'); /* Image for small screens */
+        background-image: url('../../img/laPunta.jpg');
     }
 }
 
 /* Reservation Section */
 .reservation-section {
-    top: 30px;
-    position: relative; /* Ensure it stays on top of the background */
-    z-index: 1; /* Place it above the background */
+    position: relative;
+    z-index: 1;
     max-width: 800px;
-    margin: 50px auto;
+    height: 100vh; /* Full height of the viewport */
+    margin: 0 auto;
     padding: 20px;
-    background-color: rgba(
-        255,
-        255,
-        255,
-        0.5
-    ); /* Semi-transparent white background for the form */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the form vertically */
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -44,61 +42,54 @@
 
 .reservation-header h1 {
     font-size: 2.5rem;
-    color: #c44536; /* Warm red for a Latino touch */
+    color: #c44536;
     margin-bottom: 10px;
 }
 
 .reservation-header p {
     font-size: 1.1rem;
-    color: #6b5b4d; /* Darker brown for contrast */
+    color: #6b5b4d;
 }
 
 .reservation-form-container {
     padding: 20px;
+    width: 100%;
 }
 
-.reservation-form-container h2 {
-    font-size: 2rem;
-    color: #c44536; /* Warm red */
-    margin-bottom: 20px;
-}
-
-.reservation-form {
+.reservation-form-container form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.form-group input {
+.reservation-form-container input,
+.reservation-form-container textarea {
     padding: 10px;
-    border: 1px solid #d4c8b9; /* Light brown border */
+    border: 1px solid #d4c8b9;
     border-radius: 5px;
     font-size: 1rem;
-    background-color: rgba(
-        248,
-        241,
-        231,
-        0.8
-    ); /* Semi-transparent warm beige input background */
-    color: #4a3f35; /* Dark brown text */
+    background-color: rgba(248, 241, 231, 0.8);
+    color: #4a3f35;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.form-group input:focus {
+.reservation-form-container textarea {
+    height: 100px; /* Fixed height for the comment box */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.reservation-form-container input:focus,
+.reservation-form-container textarea:focus {
     outline: none;
-    border-color: #c44536; /* Warm red on focus */
-    box-shadow: 0 0 5px rgba(196, 69, 54, 0.5); /* Subtle shadow */
+    border-color: #c44536;
+    box-shadow: 0 0 5px rgba(196, 69, 54, 0.5);
 }
 
-.reserve-button {
+.reservation-form-container button {
     padding: 12px 20px;
-    background-color: #c44536; /* Warm red */
-    color: #ffffff; /* White text */
+    background-color: #c44536;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 1.1rem;
@@ -106,30 +97,59 @@
     transition: background-color 0.3s ease;
 }
 
-.reserve-button:disabled {
-    background-color: #d4c8b9; /* Light brown when disabled */
+.reservation-form-container button:disabled {
+    background-color: #d4c8b9;
     cursor: not-allowed;
 }
 
-.reserve-button:hover:not(:disabled) {
-    background-color: #a5372b; /* Darker red on hover */
+.reservation-form-container button:hover:not(:disabled) {
+    background-color: #a5372b;
 }
 
 .error-message {
-    color: #c44536; /* Warm red for error messages */
+    color: #c44536;
     font-size: 0.9rem;
     text-align: center;
     margin-bottom: 10px;
 }
 
+/* Confirmation Message */
+.confirmation-message {
+    color: green;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+    background-color: #e8f5e9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: popUp 0.5s ease-out;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 /* Back to Home Button */
 .back-to-home-button {
     position: absolute;
-    top: 2px;
+    top: 20px;
     left: 20px;
     padding: 10px 15px;
-    background-color: #c44536; /* Warm red */
-    color: #ffffff; /* White text */
+    background-color: #c44536;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -138,5 +158,5 @@
 }
 
 .back-to-home-button:hover {
-    background-color: #a5372b; /* Darker red on hover */
+    background-color: #a5372b;
 }

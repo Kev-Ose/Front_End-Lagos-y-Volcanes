@@ -11,10 +11,12 @@ const App = () => {
         phone: '',
         date: '',
         time: '',
-        guests: ''
+        guests: '',
+        comment: '' // Added comment field
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [confirmationMessage, setConfirmationMessage] = useState('');
 
     // Fetch reservations when the component loads
     useEffect(() => {
@@ -30,9 +32,7 @@ const App = () => {
                     setReservations([]); // Reset to an empty array
                 }
             } catch (err) {
-                setError(
-                    'Error fetching reservations. Please try again later.'
-                );
+                setError('Error fetching reservations. Please try again later.');
             } finally {
                 setLoading(false);
             }
@@ -78,10 +78,7 @@ const App = () => {
 
         try {
             setLoading(true);
-            const response = await axios.post(
-                `${SERVER_URL}/reservations`,
-                form
-            );
+            const response = await axios.post(`${SERVER_URL}/reservations`, form);
             setReservations([...reservations, response.data]);
             setForm({
                 name: '',
@@ -89,7 +86,20 @@ const App = () => {
                 phone: '',
                 date: '',
                 time: '',
-                guests: ''
+                guests: '',
+                comment: '' // Reset comment field
+            });
+
+            // Set confirmation message
+            setConfirmationMessage(
+                "Your reservation has been received. We'll give you a final confirmation shortly."
+            );
+
+            // Send email to the restaurant owner
+            await axios.post(`${SERVER_URL}/send-email`, {
+                to: 'kevinosegueda1995@hotmail.com', // Replace with the restaurant owner's email
+                subject: 'New Reservation',
+                text: `New reservation details:\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nDate: ${form.date}\nTime: ${form.time}\nGuests: ${form.guests}\nComment: ${form.comment}`
             });
         } catch (err) {
             setError('Error making reservation. Please try again.');
@@ -97,6 +107,16 @@ const App = () => {
             setLoading(false);
         }
     };
+
+    // Clear confirmation message after 5 seconds
+    useEffect(() => {
+        if (confirmationMessage) {
+            const timer = setTimeout(() => {
+                setConfirmationMessage('');
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [confirmationMessage]);
 
     return (
         <div className="background-container">
@@ -117,7 +137,12 @@ const App = () => {
                     </p>
                 </header>
                 <div className="reservation-form-container">
-                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    {error && <p className="error-message">{error}</p>}
+                    {confirmationMessage && (
+                        <div className="confirmation-message">
+                            {confirmationMessage}
+                        </div>
+                    )}
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"
@@ -145,6 +170,7 @@ const App = () => {
                         />
                         <input
                             type="date"
+                            placeholder="Date"
                             value={form.date}
                             onChange={(e) =>
                                 setForm({ ...form, date: e.target.value })
@@ -152,6 +178,7 @@ const App = () => {
                         />
                         <input
                             type="time"
+                            placeholder="Time"
                             value={form.time}
                             onChange={(e) =>
                                 setForm({ ...form, time: e.target.value })
@@ -165,21 +192,17 @@ const App = () => {
                                 setForm({ ...form, guests: e.target.value })
                             }
                         />
+                        <textarea
+                            placeholder="Leave a comment (optional)"
+                            value={form.comment}
+                            onChange={(e) =>
+                                setForm({ ...form, comment: e.target.value })
+                            }
+                        />
                         <button type="submit" disabled={loading}>
                             Reserve
                         </button>
                     </form>
-
-                    {/*<h2>Reservations</h2>
-                    {loading && <p>Loading reservations...</p>}
-                    <ul>
-                        {reservations.map((res) => (
-                            <li key={res.id}>
-                                {res.name} - {res.date} {res.time} ({res.status}
-                                )
-                            </li>
-                        ))}
-                    </ul>*/}
                 </div>
             </section>
         </div>
