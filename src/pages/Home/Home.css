@@ -197,21 +197,21 @@ body {
 /* Large Screens (e.g., desktops) */
 @media (min-width: 1441px) {
     :root {
-        --button-padding: 1.5rem 3rem;
-        --button-font-size: 6rem;
-        --icon-size: 6rem;
-        --social-gap: 6rem;
+        --button-padding: 1.3rem 3rem;
+        --button-font-size: 3rem;
+        --icon-size: 3rem;
+        --social-gap: 3rem;
         --logo-width: 250px;
-        --cta-gap: 9rem;
-        --logo-width: 500px;
-        --logo-max-width: 500px;
+        --cta-gap: 7rem;
+        --logo-width: 300px;
+        --logo-max-width: 300px;
     }
 
     .homepage-components {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 25rem;
+        gap: 15rem;
         z-index: 1;
     }
 }
