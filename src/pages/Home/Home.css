@@ -1,201 +1,217 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
-/* Full-page background container */
+/* Global Styles */
+:root {
+    --button-padding: 1rem 2rem;
+    --button-font-size: 1.3rem;
+    --icon-size: 1.5rem;
+    --social-gap: 4rem;
+    --logo-width: 150px;
+    --logo-max-width: 200px;
+    --cta-gap: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Prevent Horizontal Overflow */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.homepage-section {
+    position: relative;
+    width: 100%;
+    min-height: 100dvh; /* Use min-height instead of height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Background Image */
 .background-holder {
-    position: fixed; /* Cover the entire viewport */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../img/granada.jpg'); /* Default image for large screens */
+    z-index: -1;
+    background-image: url('../../img/granada.jpg');
     background-size: cover; /* Ensure the image covers the entire background */
     background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    z-index: 0; /* Place it behind the content */
 }
 
-/* Media Query for Small Screens (e.g., tablets, mobile devices) */
-@media (max-width: 768px) {
-    .background-holder {
-        background-image: url('../../img/calzadaGranada.jpg'); /* Image for small screens */
-    }
-}
-
-/* General Styles */
-.homepage-section {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
+.homepage-components {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 2rem;
+    z-index: 1;
 }
 
-.homepage-section img {
-    width: 20%; /* Default size for larger screens */
-    max-width: 200px; /* Limit maximum size */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 2rem; /* Space below the image */
+/* Restaurant Logo */
+.restaurant-logo {
+    width: var(--logo-width);
+    max-width: var(--logo-max-width);
+    height: auto;
 }
 
-.button-link {
-    display: block; /* Make the link fill the button */
-    width: 100%;
-    height: 100%;
-    text-decoration: none; /* Remove underline from the link */
-    color: inherit; /* Inherit text color from the button */
-}
-
-/* Button container */
-.container {
+/* Call-to-Action Buttons */
+.cta-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem; /* Space between buttons */
+    flex-direction: row;
+    gap: var(--cta-gap);
 }
 
-.container button {
-    background-color: transparent; /* Make buttons initially transparent */
-    border: 3px groove whitesmoke;
+.cta-button {
+    border: 2px solid beige;
     color: white;
-    padding: 1rem 2rem; /* Flexible padding */
-    border-radius: 5px;
-    font-size: 1.5rem; /* Flexible font size */
-    cursor: pointer;
-    transition: all 0.5s ease;
-    font-family: 'Bokor', system-ui;
-}
-
-/* Remove underline from buttons */
-.container button a {
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
+    font-family: "Josefin Sans", sans-serif;
     text-decoration: none;
-    color: white;
-}
-
-.container button:hover {
+    border-radius: 8px;
+    transition: all 0.3s ease;
     background-color: transparent;
-    color: #333;
-    transform: scale(1.1);
 }
 
-/* Social Icons */
-.social {
-    position: absolute;
-    bottom: 5%; /* Position from the bottom */
-    left: 50%;
-    transform: translateX(-50%);
+.cta-button:hover {
+    background-color: transparent;
+    color: beige;
+    transform: scale(1.08);
+}
+
+/* Social Media Icons */
+.social-icons {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem; /* Space between icons */
+    gap: var(--social-gap);
 }
 
-.icons {
-    color: white;
-    font-size: 2rem; /* Flexible icon size */
+.social-icon {
+    color: #fff;
+    font-size: var(--icon-size);
     transition: transform 0.3s ease;
 }
 
-.fawha {
-    color: white;
-    font-size: 2.5rem;
+.social-icon:hover {
+    transform: scale(1.2);
 }
 
-.icons:hover {
-    transform: scale(1.5);
-}
-
-/* Media Query for 1280x720 Resolution */
-@media (min-width: 1280px) and (max-height: 720px) {
-    .homepage-section img {
-        width: 15%; /* Adjust image size for 1280x720 */
-        margin-top: 0rem; /* Adjust space below the image */
-        margin-bottom: 0rem;
-    }
-
-    .container button {
-        padding: 0.8rem 1.5rem; /* Adjust padding for buttons */
-        font-size: 1.3rem; /* Adjust font size for buttons */
-    }
-
-    .social {
-        bottom: 3%; /* Adjust positioning for social icons */
-        gap: 1.2rem; /* Adjust gap between icons */
-    }
-
-    .icons {
-        font-size: 1.8rem; /* Adjust icon size */
-    }
-
-    .fawha {
-        font-size: 2.2rem; /* Adjust icon size */
-    }
-}
-
-/* Media Queries for Responsiveness */
+/* Media Queries */
 
 /* Small Screens (e.g., mobile devices) */
 @media (max-width: 768px) {
-    .homepage-section img {
-        width: 40%; /* Increase image size for better visibility on small screens */
-        margin-bottom: 1rem; /* Reduce space below the image */
-        position: relative; /* Enable positioning */
-        top: -184px; /* Move the image 20px upward */
+    :root {
+        --button-padding: 0.8rem 1.5rem;
+        --button-font-size: 2rem;
+        --icon-size: 2.2rem;
+        --social-gap: 1rem;
+        --logo-width: 250px;
+        --cta-gap: 1.7rem;
     }
 
-    .container button {
-        padding: 0.5rem 1rem; /* Reduce padding for smaller screens */
-        font-size: 1.4rem; /* Reduce font size for smaller screens */
-        position: relative; /* Enable positioning */
-        top: -120px; /* Move the image 20px upward */
-        border-radius: 1.1rem;
-        border-width: 0.1rem;
+    .homepage-components {
+        gap: 4rem;
     }
 
-    .social {
-        top: 75%;
-        bottom: 5%; /* Adjust positioning */
-        gap: 1rem; /* Reduce gap between icons */
+    .background-holder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: url('../../img/calzadaGranada.jpg');
+        background-size: cover; /* Ensure the image covers the entire background */
+        background-position: center; /* Center the image */
     }
 
-    .icons {
-        font-size: 2rem; /* Reduce icon size for smaller screens */
+    /* Call-to-Action Buttons */
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cta-gap);
+}
+}
+
+/* Tablets (e.g., 768px width) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    :root {
+        --button-padding: 1rem 2rem;
+        --button-font-size: 1.9em;
+        --icon-size: 2rem;
+        --social-gap: 4rem;
+        --logo-width: 200px;
+        --logo-max-width: 200px;
+        --cta-gap: .9rem;
     }
 
-    .fawha {
-        color: white;
-        font-size: 2.5rem;
+    .homepage-section {
+        min-height: 100dvh; /* Ensure full height */
+    }
+
+    .background-image {
+        object-fit: cover; /* Ensure the image covers the entire area */
+        object-position: center; /* Center the image */
+    }
+
+    .homepage-components {
+        gap: 1rem;
     }
 }
 
-/* Landscape Orientation (e.g., rotated phones) */
-@media (max-width: 768px) and (orientation: landscape) {
-    .homepage-section img {
-        width: 20%; /* Adjust image size for landscape */
-        margin-bottom: 0.5rem; /* Reduce space below the image */
+/* 1440 x 900 Resolution */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    :root {
+        --button-padding: 1.2rem 2.5rem;
+        --button-font-size: 3rem;
+        --icon-size: 2.5rem;
+        --social-gap: 3.5rem;
+        --logo-width:250px;
+        --logo-max-width: 300px;
+        --cta-gap: 1.2rem;
     }
 
-    .container {
-        flex-direction: row; /* Arrange buttons horizontally */
-        gap: 1rem; /* Space between buttons */
+    .homepage-section {
+        min-height: 100dvh; /* Ensure full height */
     }
 
-    .container button {
-        padding: 0.5rem 1rem; /* Reduce padding for landscape */
-        font-size: 1rem; /* Reduce font size for landscape */
+    .background-image {
+        object-fit: cover; /* Ensure the image covers the entire area */
+        object-position: center; /* Center the image */
     }
 
-    .social {
-        bottom: 2%; /* Adjust positioning */
-        gap: 0.75rem; /* Reduce gap between icons */
+    .homepage-components {
+        gap: 10rem;
+    }
+}
+
+/* Large Screens (e.g., desktops) */
+@media (min-width: 1441px) {
+    :root {
+        --button-padding: 1.5rem 3rem;
+        --button-font-size: 6rem;
+        --icon-size: 6rem;
+        --social-gap: 6rem;
+        --logo-width: 250px;
+        --cta-gap: 9rem;
+        --logo-width: 500px;
+        --logo-max-width: 500px;
     }
 
-    .icons {
-        font-size: 1.25rem; /* Reduce icon size for landscape */
-    }
-
-    .fawha {
-        color: white;
-        font-size: 1.75rem;
+    .homepage-components {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25rem;
+        z-index: 1;
     }
 }
