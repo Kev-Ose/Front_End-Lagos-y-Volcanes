@@ -120,14 +120,14 @@ const App = () => {
 
     return (
         <div className="background-container">
-            {/* Back to Home Button */}
-            <button
+            <section className="reservation-section">
+                        {/* Back to Home Button */}
+                        <button
                 className="back-to-home-button"
                 onClick={() => (window.location.href = '/')}
             >
-                ← Back to Home
+            Home
             </button>
-            <section className="reservation-section">
                 {/* Reservation Form */}
                 <header className="reservation-header">
                     <h1>Restaurant Reservations</h1>
