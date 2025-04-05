@@ -1,6 +1,6 @@
 /* Full-page background container */
 .background-container {
-    position: fixed;
+    position: auto;
     top: 0;
     left: 0;
     width: 100%;
@@ -22,9 +22,9 @@
 /* Reservation Section */
 .reservation-section {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     max-width: 800px;
-    height: 100vh; /* Full height of the viewport */
+    min-height: 100dvh; /* Full height of the viewport */
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -157,6 +157,7 @@
     transition: background-color 0.3s ease;
 }
 
-.back-to-home-button:hover {
-    background-color: #a5372b;
+.back-to-home-button:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
 }

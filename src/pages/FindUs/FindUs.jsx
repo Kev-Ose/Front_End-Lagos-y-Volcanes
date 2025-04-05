@@ -57,14 +57,14 @@ const FindUs = () => {
                     </p>
                 </div>
             </div>
-
+    
             {/* Main Content */}
             <main className="find-us-content">
                 {/* Carousel Section */}
                 <section className="carousel-section">
                     <Carousel images={carouselImages} interval={4000} />
                 </section>
-
+    
                 {/* Info Grid - Opening Hours, Contact Info, Map */}
                 <div className="info-grid">
                     {/* Opening Hours Card */}
@@ -74,9 +74,7 @@ const FindUs = () => {
                             {days.map((day, index) => (
                                 <li
                                     key={day}
-                                    className={
-                                        index === today ? 'highlight' : ''
-                                    }
+                                    className={index === today ? 'highlight' : ''}
                                 >
                                     <span className="day">{day}:</span>
                                     <span className="time">{hours[index]}</span>
@@ -84,7 +82,7 @@ const FindUs = () => {
                             ))}
                         </ul>
                     </div>
-
+    
                     {/* Contact Info Card */}
                     <div className="info-card contact-card">
                         <h2>Contact Information</h2>
@@ -111,7 +109,7 @@ const FindUs = () => {
                             <span>BTW nummer: BE1001839160</span>
                         </div>
                     </div>
-
+    
                     {/* Map Section */}
                     <div className="map-card">
                         <iframe
@@ -122,44 +120,47 @@ const FindUs = () => {
                             referrerPolicy="no-referrer-when-downgrade"
                         ></iframe>
                     </div>
-                    <div className="redes-icons">
-                        <Link
-                            to="https://www.facebook.com/profile.php?id=61550874188064"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="redes-icon"
-                        >
-                            <FaFacebookF />
-                        </Link>
-                        <Link
-                            to="https://www.instagram.com/lagosyvolcanesbxl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="redes-icon"
-                        >
-                            <FaInstagram />
-                        </Link>
-                        <Link
-                            to="https://www.tiktok.com/@lagosyvolcanesbxl?is_from_webapp=1&sender_device=pc"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="redes-icon"
-                        >
-                            <FaTiktok />
-                        </Link>
-                        <Link
-                            to={`https://wa.me/32498600048?text=${encodeURIComponent('')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="redes-icon"
-                        >
-                            <FaWhatsapp />
-                        </Link>
-                    </div>
+                </div>
+    
+                {/* Social Media Icons - Moved outside the grid */}
+                <div className="redes-icons">
+                    <Link
+                        to="https://www.facebook.com/profile.php?id=61550874188064"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="redes-icon"
+                    >
+                        <FaFacebookF />
+                    </Link>
+                    <Link
+                        to="https://www.instagram.com/lagosyvolcanesbxl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="redes-icon"
+                    >
+                        <FaInstagram />
+                    </Link>
+                    <Link
+                        to="https://www.tiktok.com/@lagosyvolcanesbxl?is_from_webapp=1&sender_device=pc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="redes-icon"
+                    >
+                        <FaTiktok />
+                    </Link>
+                    <Link
+                        to={`https://wa.me/32498600048?text=${encodeURIComponent('')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="redes-icon"
+                    >
+                        <FaWhatsapp />
+                    </Link>
                 </div>
             </main>
         </div>
     );
+    
 };
 
 export default FindUs;

@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-
-/* Global Styles */
+/* Global Variables */
 :root {
     --button-padding: 1rem 2rem;
     --button-font-size: 1.3rem;
@@ -17,7 +15,6 @@
     box-sizing: border-box;
 }
 
-/* Prevent Horizontal Overflow */
 html,
 body {
     overflow-x: hidden;
@@ -25,18 +22,19 @@ body {
     height: 100%;
 }
 
+/* Section Container */
 .homepage-section {
     position: relative;
     width: 100%;
-    min-height: 100dvh; /* Use min-height instead of height */
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;
 }
 
-/* Background Image */
+/* Background */
 .background-holder {
     position: absolute;
     top: 0;
@@ -45,10 +43,11 @@ body {
     height: 100%;
     z-index: -1;
     background-image: url('../../img/granada.jpg');
-    background-size: cover; /* Ensure the image covers the entire background */
-    background-position: center; /* Center the image */
+    background-size: cover;
+    background-position: center;
 }
 
+/* Content Container */
 .homepage-components {
     display: flex;
     flex-direction: column;
@@ -57,14 +56,14 @@ body {
     z-index: 1;
 }
 
-/* Restaurant Logo */
+/* Logo */
 .restaurant-logo {
     width: var(--logo-width);
     max-width: var(--logo-max-width);
     height: auto;
 }
 
-/* Call-to-Action Buttons */
+/* CTA Buttons */
 .cta-buttons {
     display: flex;
     flex-direction: row;
@@ -74,13 +73,16 @@ body {
 .cta-button {
     border: 2px solid beige;
     color: white;
+    background-color: transparent;
     padding: var(--button-padding);
     font-size: var(--button-font-size);
-    font-family: "Josefin Sans", sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
     border-radius: 8px;
-    transition: all 0.3s ease;
-    background-color: transparent;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background-color 0.3s ease;
 }
 
 .cta-button:hover {
@@ -89,7 +91,7 @@ body {
     transform: scale(1.08);
 }
 
-/* Social Media Icons */
+/* Social Media */
 .social-icons {
     display: flex;
     gap: var(--social-gap);
@@ -105,14 +107,16 @@ body {
     transform: scale(1.2);
 }
 
-/* Media Queries */
+/* -------------------
+   Responsive Styles
+-------------------- */
 
-/* Small Screens (e.g., mobile devices) */
+/* Mobile */
 @media (max-width: 768px) {
     :root {
         --button-padding: 0.8rem 1.5rem;
         --button-font-size: 2rem;
-        --icon-size: 2.2rem;
+        --icon-size: 5rem;
         --social-gap: 1rem;
         --logo-width: 250px;
         --cta-gap: 1.7rem;
@@ -123,44 +127,28 @@ body {
     }
 
     .background-holder {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
         background-image: url('../../img/calzadaGranada.jpg');
-        background-size: cover; /* Ensure the image covers the entire background */
-        background-position: center; /* Center the image */
     }
 
-    /* Call-to-Action Buttons */
-.cta-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: var(--cta-gap);
-}
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .social-icon {
+        --icon-size: 2.5rem;
+        font-size: var(--icon-size);
+        color: whitesmoke;
+    }
 }
 
-/* Tablets (e.g., 768px width) */
+/* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
     :root {
         --button-padding: 1rem 2rem;
-        --button-font-size: 1.9em;
+        --button-font-size: 1.9rem;
         --icon-size: 2rem;
-        --social-gap: 4rem;
         --logo-width: 200px;
-        --logo-max-width: 200px;
-        --cta-gap: .9rem;
-    }
-
-    .homepage-section {
-        min-height: 100dvh; /* Ensure full height */
-    }
-
-    .background-image {
-        object-fit: cover; /* Ensure the image covers the entire area */
-        object-position: center; /* Center the image */
+        --cta-gap: 0.9rem;
     }
 
     .homepage-components {
@@ -168,25 +156,16 @@ body {
     }
 }
 
-/* 1440 x 900 Resolution */
+/* 1440px Resolutions */
 @media (min-width: 1025px) and (max-width: 1440px) {
     :root {
         --button-padding: 1.2rem 2.5rem;
         --button-font-size: 3rem;
         --icon-size: 2.5rem;
         --social-gap: 3.5rem;
-        --logo-width:250px;
+        --logo-width: 250px;
         --logo-max-width: 300px;
         --cta-gap: 1.2rem;
-    }
-
-    .homepage-section {
-        min-height: 100dvh; /* Ensure full height */
-    }
-
-    .background-image {
-        object-fit: cover; /* Ensure the image covers the entire area */
-        object-position: center; /* Center the image */
     }
 
     .homepage-components {
@@ -194,24 +173,19 @@ body {
     }
 }
 
-/* Large Screens (e.g., desktops) */
+/* Large Desktop */
 @media (min-width: 1441px) {
     :root {
         --button-padding: 1.3rem 3rem;
         --button-font-size: 3rem;
         --icon-size: 3rem;
         --social-gap: 3rem;
-        --logo-width: 250px;
-        --cta-gap: 7rem;
         --logo-width: 300px;
         --logo-max-width: 300px;
+        --cta-gap: 7rem;
     }
 
     .homepage-components {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 15.1rem;
-        z-index: 1;
     }
 }

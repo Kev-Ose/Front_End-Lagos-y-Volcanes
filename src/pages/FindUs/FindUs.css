@@ -1,218 +1,174 @@
-/* Base Styles */
+/* =======================
+   Root Variables & Reset
+======================= */
 :root {
-    --primary-color: #1a237e; /* Dark blue */
-    --secondary-color: #f5f5f5; /* Light gray */
-    --accent-color: #ffab00; /* Gold/yellow for highlights */
-    --text-color: #333;
-    --light-text: #fff;
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --border-radius: 8px;
-    --icon-size: 3rem;
-    --social-gap: 3.5rem;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Oswald', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-  }
-  
-  /* Hero Section */
-  .hero-section {
-    position: relative;
-    height: 40vh;
-    background: url('../../img/ojoDeAguaDesktop.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--light-text);
-  }
-  
-  .hero-overlay {
-    background-color: transparent;
-    padding: 2rem;
-    text-align: center;
-    width: 100%;
-  }
-  
-  .hero-overlay h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: white;
-  }
-  
-  .hero-overlay p {
-    font-size: 1.5rem;
-  }
-  
-  /* Main Content */
-  .find-us-content {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .carousel-section {
-    margin-bottom: 2rem;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-  }
-  
-  /* Info Grid Layout */
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .info-card {
-    background: var(--secondary-color);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-  }
-  
-  .hours-card {
-    grid-column: span 1;
-  }
-  
-  .contact-card {
-    grid-column: span 1;
-  }
-  
-  .map-card {
-    grid-column: span 2;
-    height: 400px;
-  }
-  
-  /* Card Styling */
-  .info-card h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 0.5rem;
-  }
-  
-  /* Opening Hours List */
-  .hours-card ul {
-    list-style: none;
-  }
-  
-  .hours-card li {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    font-size: 1.1rem;
-  }
-  
-  .hours-card li.highlight {
-    color: var(--primary-color);
-    font-weight: bold;
-    background-color: rgba(26, 35, 126, 0.1);
-    padding: 0.5rem;
-    border-radius: 4px;
-  }
-  
-  .day {
-    font-weight: bold;
-  }
-  
-  /* Contact Information */
-  .contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-  }
-  
-  .contact-icon {
-    margin-right: 1rem;
-    color: var(--primary-color);
-    min-width: 24px;
-  }
-  
-  /* Map Styling */
-  .map-card iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: var(--border-radius);
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
-    .map-card {
-      grid-column: span 2;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .hero-overlay h1 {
-      font-size: 2rem;
-    }
-    
-    .hero-overlay p {
-      font-size: 1.2rem;
-    }
-    
-    .info-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .map-card {
-      grid-column: span 1;
-      height: 300px;
-    }
-    
-    .hours-card li {
-      font-size: 1rem;
-    }
-    
-    .contact-item {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero-section {
-      height: 30vh;
-    }
-    
-    .hero-overlay h1 {
-      font-size: 1.8rem;
-    }
-    
-    .find-us-content {
-      padding: 1rem;
-    }
-    
-    .info-card {
-      padding: 1rem;
-    }
-    
-    .info-card h2 {
-      font-size: 1.5rem;
-    }
-  }
+  --primary-color: #1a237e;
+  --secondary-color: #f5f5f5;
+  --accent-color: #ffab00;
+  --text-color: #333;
+  --light-text: #fff;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --icon-size: 2.7rem;
+  --social-gap: 3.5rem;
+}
 
-  /* Social Media Icons */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  font-family: 'Oswald', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* =======================
+   Hero Section
+======================= */
+.hero-section {
+  position: relative;
+  height: 40vh;
+  background: url('../../img/ojoDeAguaDesktop.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-text);
+}
+
+.hero-overlay {
+  background-color: transparent;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero-overlay p {
+  font-size: 1.5rem;
+}
+
+/* =======================
+   Main Content
+======================= */
+.find-us-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-section {
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+/* =======================
+   Info Grid & Cards
+======================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.info-card {
+  background: var(--secondary-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.info-card h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Specific Cards */
+.hours-card,
+.contact-card {
+  grid-column: span 1;
+}
+
+.map-card {
+  grid-column: span 2;
+  height: 400px;
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+/* =======================
+   Hours & Contact Info
+======================= */
+.hours-card ul {
+  list-style: none;
+}
+
+.hours-card li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.hours-card li.highlight {
+  background-color: rgba(26, 35, 126, 0.1);
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.day {
+  font-weight: bold;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-icon {
+  color: var(--primary-color);
+  margin-right: 1rem;
+  min-width: 24px;
+}
+
+/* =======================
+   Social Media
+======================= */
 .redes-icons {
   display: flex;
-  gap: var(--social-gap);
   justify-content: center;
   align-items: center;
+  gap: var(--social-gap);
+  margin-top: 5%;
 }
 
 .redes-icon {
@@ -224,4 +180,62 @@
 .redes-icon:hover {
   transform: scale(1.2);
 }
-  
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width: 1024px) {
+  .map-card {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1.2rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-card {
+    grid-column: span 1;
+    height: 300px;
+  }
+
+  .hours-card li,
+  .contact-item {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 30vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .find-us-content {
+    padding: 1rem;
+  }
+
+  .info-card {
+    padding: 1rem;
+  }
+
+  .info-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .redes-icon {
+    font-size: 2.2rem;
+  }
+}
