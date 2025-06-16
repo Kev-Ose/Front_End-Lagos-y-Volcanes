@@ -98,7 +98,7 @@ const FindUs = () => {
                         </div>
                         <div className="contact-item">
                             <FaPhone className="contact-icon" />
-                            <span>GSM: 0495 52 94 94</span>
+                            <span>GSM: 498 60 00 48 </span>
                         </div>
                         <div className="contact-item">
                             <FaMailBulk className="contact-icon" />
