@@ -7,8 +7,9 @@ import Carousel from '../../components/Carousel/Carousel.jsx';
 import './FindUs.css';
 
 // Sample images for the carousel
+// import restaurantExterior from '../../img/combonavi.jpg';
 import restaurantFood from '../../img/mojito.jpg';
-import restaurantInterior from '../../img/Nacatamal.jpg';
+// import restaurantInterior from '../../img/Nacatamal.jpg';
 
 const FindUs = () => {
     const days = [
@@ -33,8 +34,9 @@ const FindUs = () => {
     ];
 
     const carouselImages = [
+        // restaurantExterior,
         restaurantFood,
-        restaurantInterior
+        // restaurantInterior
     ];
 
     return (
