@@ -8,8 +8,14 @@ import './FindUs.css';
 
 // Sample images for the carousel
 // import restaurantExterior from '../../img/combonavi.jpg';
+import caballoBayo from '../../img/caballoBayo.jpeg';
 import restaurantFood from '../../img/mojito.jpg';
 // import restaurantInterior from '../../img/Nacatamal.jpg';
+import coctelLimon from '../../img/coctelLimon.jpeg';
+import galloPinto from '../../img/galloPinto.jpeg';
+import platoMixto from '../../img/platoMixto.jpeg';
+import tajadas from '../../img/tajadas.jpeg';
+
 
 const FindUs = () => {
     const days = [
@@ -36,7 +42,12 @@ const FindUs = () => {
     const carouselImages = [
         // restaurantExterior,
         restaurantFood,
-        // restaurantInterior
+        // restaurantInterior,
+        caballoBayo,
+        coctelLimon,
+        galloPinto,
+        platoMixto,
+        tajadas,
     ];
 
     return (
