@@ -97,7 +97,7 @@ const App = () => {
 
             // Send email to the restaurant owner
             await axios.post(`${SERVER_URL}/send-email`, {
-                to: 'kevin.osegueda@facq.be', // Replace with the restaurant owner's email
+                to: 'info@lagosyvolcanoes.com', // Replace with the restaurant owner's email
                 subject: 'New Reservation',
                 text: `New reservation details:\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nDate: ${form.date}\nTime: ${form.time}\nGuests: ${form.guests}\nComment: ${form.comment}`
             });
