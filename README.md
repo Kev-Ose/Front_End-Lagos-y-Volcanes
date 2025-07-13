@@ -20,10 +20,6 @@ Welcome to **Lagos y Volcanes**, a modern and responsive restaurant website desi
 - **Build Tool**: Vite for fast development and optimized builds
 - **Deployment**: Hosted on Vercel
 
-## Project Structure
-src/ ├── components/ # Reusable UI components (Carousel, Header, Footer, etc.) ├── pages/ # Individual pages (Home, Menu, Reservation, Find Us) ├── context/ # Context API for authentication ├── utils/ # Utility functions ├── img/ # Images used across the website ├── App.jsx # Main application entry point ├── main.jsx # React DOM rendering
-
-
 ## Installation
 
 To run this project locally:
