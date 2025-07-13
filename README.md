@@ -1,4 +1,4 @@
-# Lagos y Volcanes - Restaurant Website
+# Lagos y Volcanes - V1
 
 Welcome to **Lagos y Volcanes**, a modern and responsive restaurant website designed to showcase the unique dining experience offered by this unique Nicaraguan restaurant in Brussels. This project is my first professional endeavor for a client and serves as a cornerstone of my portfolio as I pursue a career in software development.
 
