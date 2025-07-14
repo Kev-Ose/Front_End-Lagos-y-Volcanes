@@ -32,14 +32,10 @@ body {
     align-items: center;
     text-align: center;
     overflow: hidden;
-    z-index: -1;
-    background-image: url('../../img/granada.jpg');
-    background-size: cover;
-    background-position: center;
 }
 
 /* Background */
-/* .background-holder {
+.background-holder {
     position: absolute;
     top: 0;
     left: 0;
@@ -49,7 +45,7 @@ body {
     background-image: url('../../img/granada.jpg');
     background-size: cover;
     background-position: center;
-} */
+}
 
 /* Content Container */
 .homepage-components {
