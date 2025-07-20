@@ -24,7 +24,7 @@ const App = () => {
             setLoading(true);
             try {
                 const res = await axios.get(`${SERVER_URL}/reservations`);
-                console.log('Backend response:', res.data); // Log the response
+                //console.log('Backend response:', res.data); // Log the response
                 if (Array.isArray(res.data)) {
                     setReservations(res.data);
                 } else {
