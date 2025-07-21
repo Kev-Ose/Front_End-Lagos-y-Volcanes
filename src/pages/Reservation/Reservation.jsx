@@ -18,29 +18,6 @@ const App = () => {
     const [error, setError] = useState('');
     const [confirmationMessage, setConfirmationMessage] = useState('');
 
-    // Fetch reservations when the component loads
-    useEffect(() => {
-        const fetchReservations = async () => {
-            setLoading(true);
-            try {
-                const res = await axios.get(`${SERVER_URL}/reservations`);
-                //console.log('Backend response:', res.data); // Log the response
-                if (Array.isArray(res.data)) {
-                    setReservations(res.data);
-                } else {
-                    setError('Unexpected response format from the server.');
-                    setReservations([]); // Reset to an empty array
-                }
-            } catch (err) {
-                setError('Error fetching reservations. Please try again later.');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchReservations();
-    }, []);
-
     // Form validation
     const validateForm = () => {
         if (
