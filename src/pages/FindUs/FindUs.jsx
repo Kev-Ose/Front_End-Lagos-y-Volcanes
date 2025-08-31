@@ -47,13 +47,13 @@ const FindUs = () => {
         patria3,
         patria1,
         // restaurantExterior,
-        restaurantFood,
-        // restaurantInterior,
-        caballoBayo,
-        coctelLimon,
-        galloPinto,
-        platoMixto,
-        tajadas,
+        // restaurantFood,
+        // // restaurantInterior,
+        // caballoBayo,
+        // coctelLimon,
+        // galloPinto,
+        // platoMixto,
+        // tajadas,
     ];
 
     return (
