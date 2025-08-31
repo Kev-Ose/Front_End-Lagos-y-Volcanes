@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css"; // Import the styles
 
-const Carousel = ({ images, interval = 7000 }) => {
+const Carousel = ({ images, interval = 10000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Function to go to the next slide
