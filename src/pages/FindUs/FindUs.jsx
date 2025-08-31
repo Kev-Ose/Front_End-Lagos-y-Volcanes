@@ -15,6 +15,9 @@ import coctelLimon from '../../img/coctelLimon.jpeg';
 import galloPinto from '../../img/galloPinto.jpeg';
 import platoMixto from '../../img/platoMixto.jpeg';
 import tajadas from '../../img/tajadas.jpeg';
+import patria1 from '../../img/patria1.jpeg';
+import patria2 from '../../img/patria2.jpeg';
+import patria3 from '../../img/patria3.jpeg';
 
 
 const FindUs = () => {
@@ -40,6 +43,9 @@ const FindUs = () => {
     ];
 
     const carouselImages = [
+        patria2,
+        patria3,
+        patria1,
         // restaurantExterior,
         restaurantFood,
         // restaurantInterior,
