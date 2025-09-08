@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css"; // Import the styles
 
-const Carousel = ({ images, interval = 10000 }) => {
+const Carousel = ({ images, interval = 20000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Function to go to the next slide
@@ -11,8 +11,8 @@ const Carousel = ({ images, interval = 10000 }) => {
 
   // Automatically change slides at the given interval
   useEffect(() => {
-    const timer = setInterval(nextSlide, interval);
-    return () => clearInterval(timer); // Clear timer on component unmount
+  const timer = setInterval(nextSlide, interval);
+  return () => clearInterval(timer); // Clear timer on component unmount
   }, [interval, images.length]);
 
   return (
