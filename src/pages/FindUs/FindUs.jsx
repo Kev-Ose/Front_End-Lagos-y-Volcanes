@@ -44,16 +44,16 @@ const FindUs = () => {
 
     const carouselImages = [
         // patria2,
-        patria3,
-        patria1,
-        // restaurantExterior,
-        // restaurantFood,
-        // // restaurantInterior,
-        // caballoBayo,
-        // coctelLimon,
-        // galloPinto,
-        // platoMixto,
-        // tajadas,
+        // patria3,
+        // patria1,
+        restaurantExterior,
+        restaurantFood,
+        restaurantInterior,
+        caballoBayo,
+        coctelLimon,
+        galloPinto,
+        platoMixto,
+        tajadas,
     ];
 
     return (
