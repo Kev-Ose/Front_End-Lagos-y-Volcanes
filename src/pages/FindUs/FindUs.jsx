@@ -33,13 +33,13 @@ const FindUs = () => {
     const today = new Date().getDay();
 
     const hours = [
-        '08:00 - 22:00', // Sunday
+        '12:00 - 20:00', // Sunday
         'CLOSED', // Monday
-        '12:00 - 21:00', // Tuesday
-        '12:00 - 21:00', // Wednesday
-        '12:00 - 21:00', // Thursday
-        '12:00 - 22:00', // Friday
-        '08:00 - 22:00' // Saturday
+        '17:00 - 21:00', // Tuesday
+        '17:00 - 21:00', // Wednesday
+        '17:00 - 21:00', // Thursday
+        '17:00 - 22:00', // Friday
+        '12:00 - 22:00' // Saturday
     ];
 
     const carouselImages = [
